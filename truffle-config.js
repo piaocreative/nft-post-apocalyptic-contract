@@ -42,17 +42,24 @@ module.exports = {
   networks: {
     development: {
       host: "localhost",
-      port: 7545,
+      port: 8545,
       gas: 5000000,
       network_id: "*", // Match any network id
+    },
+    rinkeby: {
+      provider: function () {
+        return new HDWalletProvider(MNEMONIC, `https://eth-rinkeby.alchemyapi.io/v2/${API_KEY}`);
+      },
+      gas: 5000000,
+      network_id: 4,
     },
     live: {
       provider: function () {
         return new HDWalletProvider(MNEMONIC, `https://eth-mainnet.alchemyapi.io/v2/${API_KEY}`);
       },
       network_id: 1,
-      gas: 29000000,
-      gasPrice: 60000000000
+      gas: 3000000,      
+      gasPrice: 100000000000
     },
   },
 
