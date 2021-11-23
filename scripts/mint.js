@@ -22,7 +22,7 @@ const NUM_ITEMS = 2000;
 
 
 //*Parse the contract artifact for ABI reference.
-let rawdata = fs.readFileSync(path.resolve(__dirname, "../build/contracts/GameItem.json"));
+let rawdata = fs.readFileSync(path.resolve(__dirname, "../build/contracts/PostApocalypticItem.json"));
 let contractAbi = JSON.parse(rawdata);
 const NFT_ABI = contractAbi.abi
 

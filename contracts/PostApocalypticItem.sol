@@ -5,10 +5,7 @@ import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721UR
 import "../node_modules/@openzeppelin/contracts/utils/Counters.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
-
-
-
-contract PostApocalyptic is ERC721URIStorage, Ownable {
+contract PostApocalypticItem is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
@@ -24,7 +21,6 @@ contract PostApocalyptic is ERC721URIStorage, Ownable {
     function contractURI() public pure returns (string memory) {
         return "https://ipfs.io/ipfs/QmYT7GEes9f7yQw8xKZiYJ1akU7eFpJ8DekVRTrwxDMtSt";
     }
-
     
     function mintItem(address player, string memory tokenURI)
         public
@@ -37,5 +33,4 @@ contract PostApocalyptic is ERC721URIStorage, Ownable {
         _setTokenURI(newItemId, tokenURI);
         return newItemId;
     }
-
 }
