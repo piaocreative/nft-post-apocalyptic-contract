@@ -51,15 +51,18 @@ module.exports = {
         return new HDWalletProvider(MNEMONIC, `https://eth-rinkeby.alchemyapi.io/v2/${API_KEY}`);
       },
       gas: 5000000,
+      gasPrice: 100000000000,
       network_id: 4,
+      networkCheckTimeout: 999999,
     },
     live: {
       provider: function () {
         return new HDWalletProvider(MNEMONIC, `https://eth-mainnet.alchemyapi.io/v2/${API_KEY}`);
       },
       network_id: 1,
-      gas: 3000000,      
-      gasPrice: 100000000000
+      gas: 4000000,      
+      gasPrice: 90000000000,
+      networkCheckTimeout: 999999,
     },
   },
 
