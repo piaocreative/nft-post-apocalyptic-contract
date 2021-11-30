@@ -5,7 +5,7 @@ const path = require("path");
 require('dotenv').config()
 
 const MNEMONIC = process.env.MNEMONIC
-const API_KEY = process.env.NODE_KEY
+const API_KEY = process.env.ALCHEMY_KEY
 
 const NFT_CONTRACT_ADDRESS = ""
 const OWNER_ADDRESS = "";
