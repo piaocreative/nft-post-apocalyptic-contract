@@ -3,4 +3,5 @@ collection-data/
 nft-data/
 build/contracts/
 .env
+.env.staging
 
