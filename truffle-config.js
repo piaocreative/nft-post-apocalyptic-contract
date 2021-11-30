@@ -60,9 +60,11 @@ module.exports = {
         return new HDWalletProvider(MNEMONIC, `https://eth-mainnet.alchemyapi.io/v2/${API_KEY}`);
       },
       network_id: 1,
-      gas: 4000000,      
-      gasPrice: 90000000000,
+      gas: 5000000,      
+      gasPrice: 120000000000,
       networkCheckTimeout: 999999,
+      confirmations: 2,
+	    timeoutBlocks: 200,
     },
   },
 

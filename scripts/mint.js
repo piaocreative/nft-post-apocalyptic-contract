@@ -15,10 +15,10 @@ if (!MNEMONIC || !API_KEY) {
 
 
 //* Remember to write the nft address in manually after deploying the contract
-const NFT_CONTRACT_ADDRESS = ""
+const NFT_CONTRACT_ADDRESS = "0x43AAee38631d3427ACB7944C5a8B6Ea22EF91C9c"
 const OWNER_ADDRESS = "0xc9f3A19f0d6f383c5026E55ba3F2C6d2886bB7f6";
-const MUMBAI = `https://eth-mainnet.alchemyapi.io/v2/${API_KEY}`
-const NUM_ITEMS = 2000;
+const MAINNET = `https://eth-mainnet.alchemyapi.io/v2/${API_KEY}`
+const NUM_ITEMS = 200;
 
 
 //*Parse the contract artifact for ABI reference.
@@ -32,7 +32,7 @@ async function main() {
     //*define web3, contract and wallet instances
     const provider = new HDWalletProvider(
       MNEMONIC,
-      MUMBAI
+      MAINNET
     );
 
     const web3Instance = new web3(provider);
@@ -40,23 +40,29 @@ async function main() {
     const nftContract = new web3Instance.eth.Contract(
       NFT_ABI,
       NFT_CONTRACT_ADDRESS,
+	    {
+        gasPrice: 500000,
+        gasLimit: 1000000
+      }
     );
 
 
-      //* just mint 
-    await nftContract.methods
+    //* just mint 
+	  const result = await nftContract.methods
       .mintItem(OWNER_ADDRESS, `https://post-apocalyptic-api.herokuapp.com/api/token`)
       .send({ from: OWNER_ADDRESS }).then(console.log('minted')).catch(error => console.log(error));
 
+    console.log("Minted Item. Transaction: " + result.transactionHash);
+	  
 
     //* mint for a certain amount
     /*
-    for (var i = 1; i < NUM_ITEMS; i++) {
-      await nftContract.methods
-        .mintItem(OWNER_ADDRESS, `https://ipfs.io/ipfs/QmZ13J2TyXTKjjyA46rYENRQYxEKjGtG6qyxUSXwhJZmZt/${i}.json`)
+    for (var i = 101; i <= NUM_ITEMS; i++) {
+      const result = await nftContract.methods
+        .mintItem(OWNER_ADDRESS, `https://post-apocalyptic-api.herokuapp.com/api/token/${i}`)
         .send({ from: OWNER_ADDRESS }).then(console.log('minted')).catch(error => console.log(error));
-    }
-    */
+	    console.log("Minted Item. Transaction: " + result.transactionHash);
+    }*/
   }
   
   catch (e) {
