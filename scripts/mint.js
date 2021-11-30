@@ -13,10 +13,15 @@ if (!MNEMONIC || !API_KEY) {
   process.exit(0);
 }
 
-
 //* Remember to write the nft address in manually after deploying the contract
-const NFT_CONTRACT_ADDRESS = "0x43AAee38631d3427ACB7944C5a8B6Ea22EF91C9c"
-const OWNER_ADDRESS = "0xc9f3A19f0d6f383c5026E55ba3F2C6d2886bB7f6";
+const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT_ADDRESS;
+const OWNER_ADDRESS = process.env.OWNER_ADDRESS;
+
+if (!NFT_CONTRACT_ADDRESS || !OWNER_ADDRESS) {
+  console.error("Please set a Contract Address or Owner Address.");
+  process.exit(0);
+}
+
 const MAINNET = `https://eth-mainnet.alchemyapi.io/v2/${API_KEY}`
 const NUM_ITEMS = 200;
 
