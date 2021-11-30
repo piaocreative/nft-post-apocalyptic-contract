@@ -1,6 +1,11 @@
+# dependencies
 node_modules
-collection-data/
-nft-data/
-build/contracts/
-.env
+.vscode
 
+# Hardhat files
+cache
+artifacts
+bin
+
+# environment file
+.env
